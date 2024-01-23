@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Початок</div>
+    <script>
+        for (let i = 0; i < document.body.childNodes.length; i++) {
+            alert(document.body.childNodes[i]);
+        }
+
+        //Отцом <body> является <html>
+        alert(document.body.parentNode === document.documentElement)
+
+        alert("Следующий сосед")
+        alert(document.head.nextSibling)
+
+        alert("Пердидущий сосед")
+        alert(document.body.previousSibling);
+
+        alert("Проходка только по тегам")
+        for (let elem of document.body.children) {
+            alert(elem);
+        }
+    </script>
+</body>
+
+</html>

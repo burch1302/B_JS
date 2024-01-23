@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <div>Користувачи:</div>
+    <ul>
+        <li>Іван</li>
+        <li>Петро</li>
+    </ul>
+
+
+    <script>
+        //Укажите несколько способов доступа До DOM вузла <div>? До DOM вузла <ul>? До другого <li> (Петро)?
+
+        //DOM вузла <div>
+        document.body.firstElementChild
+        document.body.children[0]
+        document.body.childNodes[1]
+
+        //DOM вузла <ul>
+        document.body.children[1]
+        document.body.lastElementChild
+
+        //До другого <li> (Петро)
+        document.body.lastElementChild.lastElementChild
+    </script>
+</body>
+
+</html>
