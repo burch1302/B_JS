@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="elem">
+        <div id="elem-content">Елемент</div>
+    </div>
+
+    <ul>
+        <li>Цей</li>
+        <li>тест</li>
+    </ul>
+    <ul>
+        <li>повністю</li>
+        <li>пройдено</li>
+    </ul>
+
+    <h1>Зміст</h1>
+
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Розділ 1</li>
+            <li class="chapter">Розділ 2</li>
+        </ul>
+    </div>
+
+    <table id="table">
+        <tr>
+            <td>Ваш вік:</td>
+
+            <td>
+                <label>
+                    <input type="radio" name="age" value="young" checked> молодше 18
+                </label>
+                <label>
+                    <input type="radio" name="age" value="mature"> від 18 до 50
+                </label>
+                <label>
+                    <input type="radio" name="age" value="senior"> старше 60
+                </label>
+            </td>
+        </tr>
+    </table>
+    <script>
+        //Достаем элемент с документа по id (getElementById)
+        let elem = document.getElementById('elem')
+        elem.style.background = "red";
+
+        //так как id="elem-content" не может быть именем переменной из за дефиса
+        //но можно получить доступ так :
+        window['elem-content']
+
+        //querySelectorAll
+        elem.querySelectorAll(css) // вернет все элементы внутри elem , что отвечают заданному css - селектору 
+
+        //тут мы ищем все элементы <li> которые - последний дочерний элемент 
+        let elements = document.querySelectorAll('ul > li:last-child')
+        for (let elem of elements) {
+            alert(elem.innerHTML); // "тест", "пройдено"
+        }
+
+        //querySelector - возвращает первый элемент что твечают цсс селектору
+        elem.querySelector(css)
+
+        //matches
+        elem.matches(css) // проверяет отвечает ли elem заданному цсс селектору . Возвращает true или false.
+
+        //пример
+        for (let elem of document.body.children) {
+            if (elem.matches('a[href$="zip"]')) {
+                alert("Посилання на архів: " + elem.href);
+            } else {
+                alert("Нет такого элемента")
+            }
+        }
+
+        //closest - ищет ближайшего предка который отвечает селектору . Сам elem тоже включается в поиск 
+        let chapter = document.querySelector('.chapter'); // LI
+
+        alert(chapter.closest('.book')); // UL
+        alert(chapter.closest('.contents')); // DIV
+
+        alert(chapter.closest('h1')); // null (тому що h1 -- не предок)
+
+        //getElementsBy*
+
+        /*
+            elem.getElementsByTagName(tag)
+            elem.getElementsByClassName(className)
+            document.getElementsByName(name)
+        */
+
+        // отримує всі елементи div у документі
+        let divs = document.getElementsByTagName('div');
+
+        //все инпуты
+        let inputs = table.getElementsByTagName('input');
+
+        for (let input of inputs) {
+            alert(input.value + ': ' + input.checked);
+        }
+
+
+        /*
+                Підсумки 
+                Існує 6 основних методів пошуку елементів у DOM:
+                querySelector
+                querySelectorAll
+                getElementById
+                getElementsByName
+                getElementsByTagName
+                getElementsByClassName
+        */
+    </script>
+</body>
+
+</html>
