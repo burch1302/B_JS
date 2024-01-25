@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>Тварини
+            <ul>
+                <li>Ссавці
+                    <ul>
+                        <li>Корови</li>
+                        <li>Осли</li>
+                        <li>Собаки</li>
+                        <li>Тигри</li>
+                    </ul>
+                </li>
+                <li>Інші
+                    <ul>
+                        <li>Змії</li>
+                        <li>Птахи</li>
+                        <li>Ящірки</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Риби
+            <ul>
+                <li>Акваріум
+                    <ul>
+                        <li>Гуппі</li>
+                        <li>Риби-ангели</li>
+                    </ul>
+                </li>
+                <li>Море
+                    <ul>
+                        <li>Морська форель</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        // ... ваш код...
+    </script>
+
+
+    <script>
+        for (let li of document.querySelectorAll('li')) {
+            let title = li.firstChild.data;
+
+            let count = li.getElementsByTagName('li').length;
+
+            alert(title + ' : ' + count)
+        }
+    </script>
+</body>
+
+</html>

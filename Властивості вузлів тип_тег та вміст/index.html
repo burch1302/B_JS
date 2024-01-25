@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Привіт
+    <!-- Коментар -->
+    <div id="myDiv">Hi</div>
+    <div id="elem">Привіт <b>Світ</b></div>
+    <div id="news">
+        <h1>Заголовок!</h1>
+        <p>Марсіанці нападають на людей!</p>
+    </div>
+    <script>
+        //Що б перевірити ім'я класу вузла ДОМ 
+        alert(document.body.constructor.name);
+        //або
+        alert(document.body);
+        //instanceof що б перевірити наслідування 
+        alert(document.body instanceof HTMLBodyElement); // true
+        alert(document.body instanceof HTMLElement); // true
+        alert(document.body instanceof Element); // true
+        alert(document.body instanceof Node); // true
+        alert(document.body instanceof EventTarget); // true
+
+        let element = document.getElementById("myDiv");
+        console.log(element)
+        let elem = document.getElementById("elem");
+        //console.dir(element)
+
+        //Вигляд специфікації , IDL
+        /*{
+        // Define HTMLInputElement
+        // Двакрапка ":" означає, що HTMLInputElement наслідується від HTMLElement
+            interface HTMLInputElement: HTMLElement {
+        // тут визначаються всі властивості та методи елементів <input>
+
+        // "DOMString" означає, що значенням властивості є рядок
+            attribute DOMString accept;
+            attribute DOMString alt;
+            attribute DOMString autocomplete;
+            attribute DOMString value;
+
+        // булева властивість (true/false)
+            attribute boolean autofocus;
+            ...
+            // тепер метод: "void" означає, що метод не повертає значення
+            void select();
+            ...
+    }*/
+
+        //nodeType - старомодный способ получить тип узла DOM
+        alert(element.nodeType)//1
+        //1- вузли , 3 - текстові вузли , 9 - об'єкт документа 
+
+        //nodeName та tagName
+        alert(document.body.nodeName); // BODY
+        alert(document.body.tagName); // BODY
+
+        //innerHTML: вміст
+        alert(document.body.innerHTML) // читаємо поточний вміст
+        document.body.innerHTML = 'Новий BODY!'; // замінюємо його
+        //це один з найпотужніших способів зміни інформації на сторінці.
+
+        //Ми можемо спробувати вставити невалідний HTML, браузер виправить наші помилки:
+        document.body.innerHTML = '<b>тест'; // забули закрити тег
+        alert(document.body.innerHTML); // <b>тест</b> (виправлено)
+        /*
+                element.innerHTML += "..." // += в єтом случае не прибавляет к имеющемуся доку еще строку
+                //а полностью перезагружает документ!!
+                element.innerHTML += "...";
+                // коротший спосіб записати:
+                element.innerHTML = elem.innerHTML + "..."
+        */
+
+        //outerHTML: повний HTML елемента
+        alert(elem.outerHTML);//<div id="elem">Привіт <b>Світ</b></div>
+        alert(elem.innerHTML);// Привіт <b>Світ</b>
+
+
+
+        //nodeValue/data: вміст тексту вузла
+        let text = document.body.firstChild;
+        alert(text.data); // Привіт
+
+        let comment = text.nextSibling;
+        alert(comment.data); // Коментар
+
+
+
+        //textContent: чистий текст
+        let elem1 = document.getElementById("news");
+        alert(elem1.textContent);//
+
+
+
+        //Властивість “hidden”
+        //блымающий элемент 
+        setInterval(() => elem.hidden = !elem.hidden, 1000);
+    </script>
+</body>
+
+</html>
