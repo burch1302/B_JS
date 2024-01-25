@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input>
+    <div id="hello" action="greet">Hi</div>
+    <!-- позначимо div, щоб показати поле "name" тут -->
+    <div show-info="name"></div>
+    <!-- і вік "age" тут -->
+    <div show-info="age"></div>
+    <script>
+
+        //DOM властивості
+        //Властивості можна додавати 
+
+        let hi = document.getElementById("hello")
+        alert(hi)
+        document.body.myData = {
+            name: "Cesar",
+            title: "Imperor"
+        }
+
+        alert(document.body.myData.title)
+
+        //Також можна додати методи
+        document.body.sayTagName = function () {
+            alert(this.tagName);
+        }
+
+        document.body.sayTagName();//BODY 
+
+        //Можна змінювати вбудовані прототипи 
+        Element.prototype.sayHi = function () {
+            alert(`Привіт, Я ${this.tagName}`);
+        };
+
+        document.documentElement.sayHi(); // Привіт, Я HTML
+        document.body.sayHi(); // Привіт, Я BODY
+
+
+        //HTML атрибути
+        //Отримання доступу до не стандартниї атрибутів 
+
+        /*
+        alert(hi.hasAttribute(name))//перевіряє наявність атрибута
+        alert(hi.getAttribute(name))//отримує значення атрибута
+        alert(hi.setAttribute(name, value))//встановлює значення атрибута.
+        alert(hi.removeAttribute(name)) //видаляє атрибут
+        */
+
+        alert(hello.getAttribute('action'))//greet
+
+        hello.setAttribute('Test', 123);
+        alert(hello.outerHTML);
+
+        for (let attr of hello.attributes) { // (4) перерахування всіх атрибутів
+            alert(`${attr.name} = ${attr.value}`);
+        }
+
+
+        //Синхронізація властивостей і атрибутів
+        let input = document.querySelector('input');
+        // атрибут => властивість
+        input.setAttribute('id', 'id');
+        alert(input.id); // id (оновлений)
+
+        // властивість => атрибут
+        input.id = 'newId';
+        alert(input.getAttribute('id')); // newId (оновлений)
+
+
+
+        //Властивості DOM - типізовані
+
+        //Нестандартні атрибути, dataset
+        /*
+        Іноді нестандартні атрибути використовуються для 
+        передачі користувацьких даних з HTML до JavaScript, або для “позначення” HTML-елементів для JavaScript.
+        */
+
+        // код знаходить елемент з позначкою і показує те, що запитується
+        let user = {
+            name: "Іван",
+            age: 25
+        };
+
+        for (let div of document.querySelectorAll('[show-info]')) {
+            // вставимо відповідну інформацію в поле
+            let field = div.getAttribute('show-info');
+            div.innerHTML = user[field]; // по-перше, значення "Іван" в div з "name", потім 25 в "age"
+        }
+
+    </script>
+</body>
+
+</html>

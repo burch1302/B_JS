@@ -1,0 +1,24 @@
+Напишіть код, щоб вибрати елемент з атрибутом data-widget-name з документа та прочитати його значення.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div data-widget-name="menu">Виберіть жанр</div>
+    <script>
+
+        let element = document.querySelector('[data-widget-name]')
+        let value = element.getAttribute('data-widget-name')
+        alert(value)
+        //или
+        alert(element.dataset.widgetName);
+    </script>
+</body>
+
+</html>
