@@ -1,0 +1,8 @@
+              inerHTML
+
+// Получение HTML-содержимого элемента с id="example"
+var content = document.getElementById("example").innerHTML;
+
+// Установка HTML-содержимого элемента с id="example"
+document.getElementById("example").innerHTML = "<p>Новый контент</p>";
+
