@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            transition: background-color 0.5s;
+            margin: 5px
+        }
+    </style>
+</head>
+
+<body class="main-page">
+    <h1>Change background</h1>
+    <button id="changeColorButton">Нажми меня</button>
+    <script>
+        //className та classList
+        //Раніше класс не міг будти властивістю об'єкта
+        //але тепер
+        alert(document.body.className)//main page
+        document.body.classList.add('article')
+        alert(document.body.className)//main page article
+
+        //Методи classList:
+        /*
+        elem.classList.add / remove("class")  – додати/видалити клас.
+        elem.classList.toggle("class") – додає клас, якщо він не існує, інакше видаляє його.
+        elem.classList.contains("class") – перевіряє, чи існує переданий клас, відповідно повертає true/false
+        */
+
+        //Крім того classList ітерований об'єкт 
+        for (let name of document.body.classList) {
+            alert(name)//main-page , article
+        }
+
+        //нажимая на кнопку меняем цвет фона 
+        let knopka = document.getElementById('changeColorButton')
+
+        let isRed = false;
+
+        //Обработчик события на клик
+        knopka.addEventListener('click', function () {
+            if (!isRed) {
+                document.body.style.backgroundColor = 'red';
+            } else {
+                document.body.style.backgroundColor = '';
+            }
+
+            isRed = !isRed;
+        });
+
+        //Скидання властивості в elem.style
+
+        knopka.style.display = 'none';
+        setTimeout(() => knopka.style.display = '', 1000)
+
+        //Метод elem.style.removeProperty('style property') - видаляе властивість
+        document.body.style.background = 'blue';
+        setTimeout(() => document.body.style.removeProperty('background'), 2000);
+
+        //Обчислені стилі: getComputedStyle
+
+        let computedStyle = getComputedStyle(document.body)
+        alert(computedStyle.margin) //5px
+
+    </script>
+</body>
+
+</html>
