@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+
+    <table id="bagua-table">
+        <tr>
+            <th colspan="3">Таблиця <em>Багуа</em>: Напрямок, Елемент, Колір, Значення</th>
+        </tr>
+        <tr>
+            <td class="nw"><strong>Північний захід</strong>
+                <br>Метал
+                <br>Срібний
+                <br>Старійшини
+            </td>
+            <td class="n"><strong>Північ</strong>
+                <br>Вода
+                <br>Блакитний
+                <br>Зміни
+            </td>
+            <td class="ne"><strong>Північний схід</strong>
+                <br>Земля
+                <br>Жовтий
+                <br>Напрямок
+            </td>
+        </tr>
+        <tr>
+            <td class="w"><strong>Захід</strong>
+                <br>Метал
+                <br>Золотий
+                <br>Молодість
+            </td>
+            <td class="c"><strong>Центр</strong>
+                <br>Все
+                <br>Пурпурний
+                <br>Гармонія
+            </td>
+            <td class="e"><strong>Схід</strong>
+                <br>Деревина
+                <br>Блакитний
+                <br>Майбутнє
+            </td>
+        </tr>
+        <tr>
+            <td class="sw"><strong>Південний захід</strong>
+                <br>Земля
+                <br>Коричневий
+                <br>Спокій
+            </td>
+            <td class="s"><strong>Південь</strong>
+                <br>Вогонь
+                <br>Помаранчевий
+                <br>Слава
+            </td>
+            <td class="se"><strong>Південний схід</strong>
+                <br>Деревина
+                <br>Зелений
+                <br>Романтика
+            </td>
+        </tr>
+
+    </table>
+
+    <script>
+        let table = document.getElementById('bagua-table');
+
+        let selectedTd;
+
+        table.onclick = function (event) {
+            let target = event.target;
+
+            while (target != this) {
+                if (target.tagName == 'TD') {
+                    highlight(target);
+                    return;
+                }
+                target = target.parentNode;
+            }
+        }
+
+        function highlight(node) {
+            if (selectedTd) {
+                selectedTd.classList.remove('highlight');
+            }
+            selectedTd = node;
+            selectedTd.classList.add('highlight');
+        }
+    </script>
+
+</body>
+
+</html>
